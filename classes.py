@@ -31,11 +31,14 @@ class Field (object):
         count       += 1
 
   def __str__ (self):
-    delim = '+'
-    for x in range (self.columns): delim += '---+'
-    string = delim + '\n'
+    string = '  '
+    delim = ' +'
+    for x in range (self.columns):
+      delim += '---+'
+      string += ' %d  ' % x
+    string += '\n' + delim + '\n'
     for y in range (self.rows):
-      string += '|'
+      string += '%d|' % y
       for x in range (self.columns):
         cell = self.list_cells [(x, y)]
         if cell.is_open: string += ' %d |' % cell.count
