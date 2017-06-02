@@ -2,6 +2,26 @@
 
 from random import randrange
 
+class Game (object):
+  '''Игра'''
+  def __init__ (self, rows, columns, mines):
+    '''Инициализация'''
+    self.field   = Field (rows = rows, columns = columns, mines = mines)
+    self.is_win  = False
+    self.is_lost = False
+    self.is_err  = True
+
+  def __str__ (self):
+    string = str (self.field)
+    return string
+
+  def open_cell (self):
+    x = -1
+    y = -1
+    while x not in range (self.field.columns): x = int (input ('Укажите X: '))
+    while y not in range (self.field.rows):    y = int (input ('Укажите Y: '))
+    return (x, y)
+
 class Field (object):
   '''Игровое поле'''
   def __init__ (self, rows = 10, columns = 10, mines = 10):
